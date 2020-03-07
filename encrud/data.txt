@@ -1,0 +1,6 @@
+({:book {:name "Anathem", :tags ["anathem"]},
+  :prices (33.0),
+  :time "04-03-2020, 18:44"}
+ {:book {:name "Snow Crash", :tags ["snow" "crash"]},
+  :prices (22.5 23.0 25.0 30.0 31.9 42.8 54.9 59.9),
+  :time "04-03-2020, 18:44"})
