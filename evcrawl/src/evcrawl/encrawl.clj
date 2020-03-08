@@ -50,7 +50,7 @@
   [old-prices new-prices]
   (if (empty? old-prices)
     new-prices
-    (filter #(< % (apply min old-prices)) new-prices)))
+    (filter #(< (float %) (float (apply min old-prices))) new-prices)))
 
 (defn stringify-prices-as-list
   [prices]
@@ -79,6 +79,7 @@
 (defn run-script
   "Runs the entire script"
   []
+  (pb/check-token)
   (let [data (db/read-from-file)]
     (loop [entry (first data)
            entries (rest data)

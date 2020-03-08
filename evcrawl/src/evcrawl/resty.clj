@@ -4,9 +4,8 @@
             [compojure.route :as route]
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]
             [ring.middleware.cors :refer [wrap-cors]]
-            [clojure.pprint :as pp]
-            [clojure.java.browse]
             [evcrawl.poordb :as db]
+            [clojure.java.io]
             [clojure.walk :as walk])
   (:gen-class))
 
@@ -55,6 +54,4 @@
                                                      :access-control-allow-methods [:get :put :post :delete])))
       {:port port})
     (println
-      (str "Running webserver at http://127.0.0.1:" port "/"))
-    ;(clojure.java.browse/browse-url (str "http://localhost:" port))
-    ))
+      (str "Running webserver at http://127.0.0.1:" port "/"))))

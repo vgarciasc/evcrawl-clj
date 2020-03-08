@@ -4,16 +4,21 @@
 
 (def ^:dynamic *filepath* "data.txt")
 
+(defn is-file-nonexistent?
+  [filepath]
+  (not (.exists (io/file filepath))))
+
 (defn creates-if-nonexistent
   "Creates file if it doesn't exist."
-  []
-  (if (not (.exists (io/file *filepath*)))
-    (spit *filepath* '())))
+  ([filepath] (creates-if-nonexistent filepath '()))
+  ([filepath default]
+   (if (is-file-nonexistent? filepath)
+     (spit filepath default))))
 
 (defn save-to-file
   "Saves entries to file"
   [entries]
-  (creates-if-nonexistent)
+  (creates-if-nonexistent *filepath*)
   (->> entries
        (clojure.pprint/pprint)
        (with-out-str)
@@ -22,7 +27,7 @@
 (defn read-from-file
   "Reads entries from file"
   []
-  (creates-if-nonexistent)
+  (creates-if-nonexistent *filepath*)
   (->> (slurp *filepath*)
        (clojure.edn/read-string)
        (flatten)))

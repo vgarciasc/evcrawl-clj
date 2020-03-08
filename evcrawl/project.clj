@@ -13,6 +13,6 @@
                  [ring/ring-json "0.5.0"]
                  [ring-cors "0.1.13"]
                  [org.clojure/data.json "0.2.6"]]
-  :repl-options {:init-ns scratchpad.core}
+  :repl-options {:init-ns evcrawl.encrawl}
   :main evcrawl.encrawl
   :aot [evcrawl.encrawl])
